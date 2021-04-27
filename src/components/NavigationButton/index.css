@@ -1,0 +1,23 @@
+button{
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid #ec6533;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:hover{
+    background-color: hsl(39, 100%, 50%, 0.3);
+}
+
+button img{
+    width: 90px;
+    height: 90px;
+}
+
+hr{
+    border: 0.3px solid orangered;
+    width: 30px;
+}

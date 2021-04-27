@@ -1,10 +1,12 @@
 //import logo from './logo.svg';
 //import './App.css';
+import Menu from './pages/Menu'
+import React from 'react'
 
 function App() {
   return (
     <div className="App">
-      <h2>Teste</h2>
+      <Menu></Menu>
     </div>
   );
 }
