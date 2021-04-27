@@ -1,4 +1,4 @@
-button{
+#navButton{
     width: 200px;
     margin: 10px;
     text-align: center;
@@ -8,16 +8,16 @@ button{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-button:hover{
+#navButton:hover{
     background-color: hsl(39, 100%, 50%, 0.3);
 }
 
-button img{
+#navButton img{
     width: 90px;
     height: 90px;
 }
 
-hr{
+.hrSmall{
     border: 0.3px solid orangered;
     width: 30px;
 }
