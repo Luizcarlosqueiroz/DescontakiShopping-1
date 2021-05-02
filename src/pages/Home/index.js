@@ -6,6 +6,8 @@ import gestaoDeCuponsImg from '../../assets/images/percentage.png'
 
 import NavigationButton from '../../components/NavigationButton'
 
+import { Link } from 'react-router-dom';
+
 const Menu = ()=>{
     
     
@@ -18,7 +20,8 @@ const Menu = ()=>{
             <div id='shoppingOptions'>
                 <NavigationButton handleButton='' value='Relatório dos Lojistas' imgSrc={relatorioImg}/>
                 <NavigationButton handleButton='' value='Relatório dos Consumidores' imgSrc={consumidorImg}/>
-                <NavigationButton handleButton='' value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/>
+
+                <Link to="/cupons"> <NavigationButton handleButton='' value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/> </Link>
             </div>
             <hr className='hrLarge'></hr>
         </div>

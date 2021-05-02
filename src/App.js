@@ -2,11 +2,15 @@
 //import './App.css';
 import Home from './pages/Home'
 import React from 'react'
+import Routes from './routes'
+import {BrowserRouter} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Home></Home>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </div>
   );
 }
