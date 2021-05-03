@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {EditOutlined} from '@ant-design/icons';
-import {smallButton} from '../ButtonSmall';
+import ButtonSmall from '../ButtonSmall';
 
 import './index.css';
 
@@ -13,6 +13,8 @@ const CupomDisplay = () => {
 
     let totalCupomDisponível = "number";
     let totalCupomUtilizado = "number2";
+
+    let cupomStatus = "Active";
 
     return (
         <div className="container">
@@ -37,7 +39,8 @@ const CupomDisplay = () => {
                 
                 <EditOutlined />
 
-                <smallButton>{"Test"}</smallButton>
+                <ButtonSmall title={cupomStatus} />
+
             </div>
 
         </div>
