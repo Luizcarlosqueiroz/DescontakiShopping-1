@@ -1,3 +1,30 @@
 .container{
-    border: 1px solid black;
+
+    background-color: #FFF;
+    width: 40%;
+
+    border: 0.5px solid black;
+    border-radius: 5px;
+
+    display: table;
+    padding: 10px;
+}
+
+.barraLateral{
+    display: table-cell;
+    border-left: 1px solid lightgray;
+    height: 100px;
+    padding: 15px;
+  }
+
+.cupomInfo {
+    display: table-cell;
+    width: 70%;
+
+    text-align: left;
+}
+
+.cupomStats {
+    display: table-cell;
+    width: 30%;
 }
