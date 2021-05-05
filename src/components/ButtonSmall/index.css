@@ -1,19 +1,27 @@
 .buttonclass{
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
-    transition: all 0.2s;
-    background-color: #fa4505;
-}
+    display: inline-block;
+    cursor: pointer;
+    padding: 2px;
+    margin: 5px;
+    width: 120px;
+    height: 30px;
+    background-color: #ec6533;
 
+    color: #FFFFFF;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+
+    border: 1px solid #fa4605;
+    border-radius: 5px;
+}
 .buttonclass:hover{
-    color:#000000;
+    color:#fa4605;
     background-color:#FFFFFF;
 }
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+        

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {EditOutlined} from '@ant-design/icons';
 import ButtonSmall from '../ButtonSmall';
 
 import './index.css';
@@ -15,6 +14,7 @@ const CupomDisplay = () => {
     let totalCupomUtilizado = "number2";
 
     let cupomStatus = "Active";
+    let cupomEdit = "Edit";
 
     return (
         <div className="container">
@@ -22,6 +22,10 @@ const CupomDisplay = () => {
                 <h3>{cupomTitle}</h3>
                 <p>{cupomStore}</p>
                 <p>{cupomDescription}</p>
+            </div>
+
+            <div className="barraLateral">
+
             </div>
             
             <div className="cupomStats">
@@ -33,14 +37,10 @@ const CupomDisplay = () => {
                         <th>Utilizado: </th> <th>{totalCupomUtilizado}</th>
                     </tr>
                 </table>
-            </div>
 
-            <div>
-                
-                <EditOutlined />
 
+                <ButtonSmall title={cupomEdit} />
                 <ButtonSmall title={cupomStatus} />
-
             </div>
 
         </div>
