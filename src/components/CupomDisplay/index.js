@@ -40,7 +40,7 @@ const CupomDisplay = () => {
 
 
                 <ButtonSmall title={cupomEdit} />
-                <ButtonSmall title={cupomStatus} />
+                <ButtonSmall title={cupomStatus} calltoAction/>
             </div>
 
         </div>

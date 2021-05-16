@@ -5,23 +5,25 @@
     margin: 5px;
     width: 120px;
     height: 30px;
-    background-color: #ec6533;
-
-    color: #FFFFFF;
+    
     font-size: 16px;
-    text-decoration: none;
+    text-decoration: bold;
     text-align: center;
 
     border: 1px solid #fa4605;
     border-radius: 5px;
 }
-.buttonclass:hover{
+.activeButton{
+    color: #FFFFFF;
+    background-color: #ec6533;
+}
+.disactiveButton{
     color:#fa4605;
     background-color:#FFFFFF;
 }
-.myButton:active {
-	position:relative;
-	top:1px;
+.buttonclass:hover{
+    font-weight: bold;
 }
+
 
         

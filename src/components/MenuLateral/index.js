@@ -5,7 +5,7 @@ import './style.css';
 const MenuSide = () => {
     return (
         <Menu>
-            <a id="home" className="menu-item" href="/home">Home</a>
+            <a id="home" className="menu-item" href="/">Home</a>
             <a id="reportLojistas" className="menu-item" href="/">Relatório dos Lojistas</a>
             <a id="reportConsumidores" className="menu-item" href="/">Relatório dos Consumidores</a>
             <a id="gestaoCupons" className="menu-item" href="/">Gestão de Cupons</a>

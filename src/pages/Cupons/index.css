@@ -3,3 +3,10 @@
     padding-top: 5%;
     padding-bottom: 40px;
 }
+
+#btnAdd {
+    display: flex;
+    float: right;
+    padding-top: 30px;
+    padding-right: 30px;
+}
