@@ -2,14 +2,15 @@ import React from 'react';
 
 import './index.css';
 
-const ButtonSmall = ({title}) => {
+const ButtonSmall = ({title, handlerButton, calltoAction}) => {
 
     return(
         
         <div>
-            <button className="buttonclass">{title}</button>
+            <button onClick={handlerButton} className= {calltoAction ? "buttonclass activeButton" : "buttonclass disactiveButton"} >{title}</button>
         </div>
     )
 }
 
 export default ButtonSmall;
+
