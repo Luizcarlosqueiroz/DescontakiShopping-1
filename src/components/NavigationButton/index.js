@@ -1,10 +1,10 @@
 import React from 'react'
 import './index.css'
 
-const navigationButton = ({handleButton, value, imgSrc, altImg})=>{
+const navigationButton = ({value, imgSrc, altImg})=>{
     return(
         <>
-            <button onClick={handleButton} id='navButton'>
+            <button id='navButton'>
                 <img src={imgSrc} alt={altImg}></img>
                 <hr className='hrSmall'></hr>
                 {value}
