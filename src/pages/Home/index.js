@@ -18,10 +18,9 @@ const Menu = ()=>{
             <p>O que deseja fazer?</p>
             <hr className='hrLarge'></hr>
             <div id='shoppingOptions'>
-                <NavigationButton handleButton='' value='Relatório dos Lojistas' imgSrc={relatorioImg}/>
-                <NavigationButton handleButton='' value='Relatório dos Consumidores' imgSrc={consumidorImg}/>
-
-                <Link to="/GestaodeCupons"> <NavigationButton handleButton='' value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/> </Link>
+                <Link to="/relatorios"><NavigationButton value='Relatório dos Lojistas' imgSrc={relatorioImg}/></Link>
+                <Link to="/relatorios"><NavigationButton value='Relatório dos Consumidores' imgSrc={consumidorImg}/></Link>
+                <Link to="/gestaodecupons"><NavigationButton value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/></Link>
             </div>
             <hr className='hrLarge'></hr>
         </div>

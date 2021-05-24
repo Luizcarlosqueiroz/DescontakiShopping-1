@@ -1,6 +1,3 @@
-import React,{Component} from 'react'
-
-
 const Information = [
     {
       "id": 48,

@@ -2,7 +2,8 @@ import React from 'react';
 
 import Menu from '../pages/Home';
 import ListaCupons from '../pages/Cupons';
-import AdicionarNovoCupom from '../pages/AdicionarCupom'
+import AdicionarNovoCupom from '../pages/AdicionarCupom';
+import Relatorios from '../pages/Relatorios';
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -12,8 +13,9 @@ const Routes = () => {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact={true} component={Menu} />
-                    <Route path="/GestaodeCupons" component={ListaCupons} />
-                    <Route path="/AdicionarNovoCupom" component={AdicionarNovoCupom} />
+                    <Route path="/gestaodecupons" component={ListaCupons} />
+                    <Route path="/adicionarnovocupom" component={AdicionarNovoCupom} />
+                    <Route path="/relatorios" component={Relatorios} />
                 </Switch>
             </BrowserRouter>
         </div>

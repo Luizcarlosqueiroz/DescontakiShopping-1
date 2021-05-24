@@ -3,7 +3,9 @@ import ButtonSmall from '../ButtonSmall'
 import Input from '../Input';
 import FormValidations from './formValidation'
 import useValidation from './hooks/useValidation';
-import Link from '../../routes'
+import { Link } from 'react-router-dom';
+import './style.css';
+
 
 const initialFormState = {
     titulo:'',
@@ -23,7 +25,6 @@ const CupomForm = () => {
         setForm( form => ({... form, ...newValue}));
     }
 
-    
     // const submitForm = () => {
     //     if (localStorage.getItem('formData') != null) {
     //         formData = JSON.parse(localStorage.getItem('formData'));
@@ -34,7 +35,7 @@ const CupomForm = () => {
     // }
 
     return (
-        <>
+        <div className="AddCupomForm">
             <form>
                 <Input
                     name="titulo"
@@ -42,6 +43,7 @@ const CupomForm = () => {
                     placeholder="Título do Cupom"
                     onChange={e => setInput({titulo: e.target.value})}
                     error={errors.titulo}
+                    height="100px"
                 />
                 <Input
                     name="descricao"
@@ -79,9 +81,9 @@ const CupomForm = () => {
                     error={errors.nomeLoja}
                 />
                 
-                <div>
+                <div className="addCupomButtons">
                     <ButtonSmall title="Enviar" calltoAction />
-                    <Link to="/GestaodeCupons">
+                    <Link to="/gestaodecupons">
                         <ButtonSmall title="Cancelar" />
                     </Link>
 
@@ -89,7 +91,7 @@ const CupomForm = () => {
 
 
             </form>
-        </>
+        </div>
     )
 
 }
