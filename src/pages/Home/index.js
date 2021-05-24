@@ -22,10 +22,10 @@ const Menu = ()=>{
                 <p>O que deseja fazer?</p>
                 <hr className='hrLarge'></hr>
                 <div id='shoppingOptions'>
-                    <NavigationButton value='Relatório dos Lojistas' imgSrc={relatorioImg}/>
-                    <NavigationButton value='Relatório dos Consumidores' imgSrc={consumidorImg}/>
+                    <Link to="/relatorios"><NavigationButton value='Relatório dos Lojistas' imgSrc={relatorioImg}/></Link>
+                    <Link to="/relatorios"><NavigationButton value='Relatório dos Consumidores' imgSrc={consumidorImg}/></Link>
                     <NavigationButton value='Cadastrar Lojista' imgSrc={consumidorImg}/>
-                    <Link to="/GestaodeCupons"><NavigationButton value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/></Link>
+                    <Link to="/gestaodecupons"><NavigationButton value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/></Link>
                 </div>
                 <hr className='hrLarge'></hr>
             </div>

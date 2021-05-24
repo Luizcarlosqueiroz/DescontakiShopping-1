@@ -7,7 +7,7 @@ const Input = ({ error, ...rest}) => {
 
     return (
         <>
-            <MyInput  {...rest} onBlur={() => setTouched(true)} />
+            <MyInput {...rest} onBlur={() => setTouched(true)} />
             <Span>{touched && error}</Span>
         </>
     )

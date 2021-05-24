@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component  } from 'react';
 
 import ButtonSmall from '../ButtonSmall';
 import Information from '../info-json';
 import Search from '../SearchBox';
+ 
 import { AiOutlineSearch } from 'react-icons/ai';
-
 
 import './index.css';
 
@@ -23,9 +23,7 @@ class CupomMap extends Component {
         this.setState({search:keyword})
     }
 
-
     render(){
-
 
         const items = Information.filter((data) => {
           if (this.state.search == null) {
@@ -45,7 +43,6 @@ class CupomMap extends Component {
               </div>
 
               <div className="barraLateral"></div>
-
               <div className="cupomStats">
                 <table>
                   <tr>
