@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import Input from '../Input'
+import Input from '../InputRegisterShop'
 import ButtonSmall from '../ButtonSmall'
 import {LojistaFormValidation} from './formValidation'
 import useValidation from './hooks/useValidation'
+import { Link } from 'react-router-dom';
+import './index.css'
 
 const initialForm = {
     cnpj:'',
@@ -20,9 +22,9 @@ const LojistaForm = () => {
     }
 
     return(
-        <>
-            <h3>Formulário Teste</h3>
-            <form>
+        <div className='div-form-lojista'>
+            <h3>Preencha os campos para cadastrar o Lojista</h3>
+            <form className='form-lojista'>
                 <Input
                    name='cnpj'
                    type='text'
@@ -55,9 +57,15 @@ const LojistaForm = () => {
                    error={erros.ponto}
                 />
 
-                <ButtonSmall title='Enviar'></ButtonSmall>
+                <div className="form-cadastrar-lojista-buttons">
+                    <ButtonSmall title="Enviar" calltoAction />
+                    <Link to="/">
+                        <ButtonSmall title="Cancelar" />
+                    </Link>
+
+                </div>
             </form>
-        </>
+        </div>
     )
 }
 
