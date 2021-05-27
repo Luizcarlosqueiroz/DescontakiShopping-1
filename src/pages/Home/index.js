@@ -24,7 +24,7 @@ const Menu = ()=>{
                 <div id='shoppingOptions'>
                     <Link to="/relatorios"><NavigationButton value='Relatório dos Lojistas' imgSrc={relatorioImg}/></Link>
                     <Link to="/relatorios"><NavigationButton value='Relatório dos Consumidores' imgSrc={consumidorImg}/></Link>
-                    <NavigationButton value='Cadastrar Lojista' imgSrc={consumidorImg}/>
+                    <Link to="/cadastrarlojista"><NavigationButton value='Cadastrar Lojista' imgSrc={consumidorImg}/></Link>
                     <Link to="/gestaodecupons"><NavigationButton value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/></Link>
                 </div>
                 <hr className='hrLarge'></hr>
