@@ -1,0 +1,22 @@
+.addCupom {
+    width: 600px;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 1px solid #ec6533;
+    border-radius: 15px;
+    
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.addCupom h1{
+    text-align: center;
+}
+
+#btnRtn {
+    display: flex;
+    float: left;
+    padding-left: 30px;
+}
