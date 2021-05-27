@@ -15,7 +15,7 @@ const ListaCupons = () => {
         <div>
 
             <div id="btnAdd">
-                <Link to="./AdicionarNovoCupom">
+                <Link to="/AdicionarNovoCupom">
                     <RiAddCircleLine color="#fa4505" size="2.8em" titile="Adicionar Cupom"/>
                 </Link>
             </div>
