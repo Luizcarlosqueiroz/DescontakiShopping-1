@@ -1,11 +1,5 @@
 import React from 'react'
 
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
-
-import Information from '../../components/info-json-relatorio1';
-
-import GraficoLojistaCategoria from '../../components/Graficos/GrLojaCategoria';
-
 import GraphLojas from '../../components/Graficos/GraphLojas';
 
 const Relatorios = () => {

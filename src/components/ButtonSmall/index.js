@@ -2,12 +2,12 @@ import React from 'react';
 
 import './index.css';
 
-const ButtonSmall = ({title, handlerButton, calltoAction}) => {
+const ButtonSmall = ({title, handlerButton, calltoAction, disabled}) => {
 
     return(
         
         <div>
-            <button onClick={handlerButton} className= {calltoAction ? "buttonclass activeButton" : "buttonclass disactiveButton"} >{title}</button>
+            <button onClick={handlerButton} disabled={disabled} className= {calltoAction ? "buttonclass activeButton" : "buttonclass disactiveButton"} >{title}</button>
         </div>
     )
 }

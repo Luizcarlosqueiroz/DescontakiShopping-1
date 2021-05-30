@@ -13,14 +13,27 @@ class CupomMap extends Component {
     constructor(){
         super();
         
-        this.state={
-            search:null
-        };
+        this.state = {search: null};
+        this.state = {month:'01'}
     }
 
     searchSpace=(event)=>{
-        let keyword = event.target.value;
-        this.setState({search:keyword})
+      let keyword = event.target.value;
+      this.setState({search:keyword})
+    }
+
+    handleChangeMonth=(event)=>{
+      this.setState({month: event.target.value});
+      
+      let mes = this.state.month;
+
+      fetch(`https://pblelcoma-final.herokuapp.com/cupons/${mes}/2021`)
+      .then(Response => {
+        return Response.json();
+      })
+      .then(data =>{
+        console.log(data);
+      });
     }
 
     render(){
@@ -28,9 +41,7 @@ class CupomMap extends Component {
         const items = Information.filter((data) => {
           if (this.state.search == null) {
             return data;
-          } else if (
-            data.titulo.toLowerCase().includes(this.state.search.toLowerCase())
-          ) {
+          } else if (data.titulo.toLowerCase().includes(this.state.search.toLowerCase())) {
             return data;
           }
         }).map((data) => {
@@ -62,6 +73,10 @@ class CupomMap extends Component {
 
         return (
             <div>
+              <select value={this.state.month} onChange={this.handleChangeMonth}>
+                <option value="01"> Jan/21</option>
+                <option value="02"> Fev/21</option>
+              </select>
               <AiOutlineSearch size="1.5em"/>
               <Search placeholder="Pesquisar..." handleSearch={(e)=>this.searchSpace(e)}></Search>
               {items}
