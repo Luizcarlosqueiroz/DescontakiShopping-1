@@ -22,7 +22,40 @@ const CupomForm = () => {
     const { errors, invalid } = useValidation(form, FormValidations);
 
     const setInput = (newValue) => {
-        setForm( form => ({... form, ...newValue}));
+        setForm( form => ({...form, ...newValue }));
+    }
+
+    // https://www.geeksforgeeks.org/how-to-send-a-json-object-to-a-server-using-javascript/
+    const postCupomToAPI = () => {
+        let result = document.querySelector('.result');
+        let titulo = document.querySelector('#titulo');
+        let descricao = document.querySelector('#descricao');
+        let validade = document.querySelector('#validade');
+        let valor = document.querySelector('#valor');
+        let idLoja = document.querySelector('#idLoja');
+        let nomeLoja = document.querySelector('#nomeLoja');
+        
+        let xhr = new XMLHttpRequest();
+        let url = "";
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                result.innerHTML = this.responseText;
+            }
+        };
+
+        var data = JSON.stringify({
+            "titulo": titulo.value, 
+            "descricao": descricao.value, 
+            "validade": validade.value, 
+            "valor": valor.value, 
+            "idLoja": idLoja.value, 
+            "nomeLoja": nomeLoja.value})
+
+        xhr.send(data);
     }
 
     // const submitForm = () => {
@@ -39,6 +72,7 @@ const CupomForm = () => {
             <form>
                 <Input
                     name="titulo"
+                    id="titulo"
                     type="text"
                     placeholder="Título do Cupom"
                     onChange={e => setInput({titulo: e.target.value})}
@@ -47,6 +81,7 @@ const CupomForm = () => {
                 />
                 <Input
                     name="descricao"
+                    id="descricao"
                     type="text"
                     placeholder="Descrição"
                     onChange={e => setInput({descricao: e.target.value})}
@@ -54,6 +89,7 @@ const CupomForm = () => {
                 />
                 <Input
                     name="validade"
+                    id="validade"
                     type="date"
                     placeholder="Data de Validade"
                     onChange={e => setInput({validade: e.target.value})}
@@ -61,6 +97,7 @@ const CupomForm = () => {
                 />
                 <Input
                     name="valor"
+                    id="valor"
                     type="text"
                     placeholder="Valor"
                     onChange={e => setInput({valor: e.target.value})}
@@ -68,6 +105,7 @@ const CupomForm = () => {
                 />
                 <Input
                     name="idLoja"
+                    id="idLoja"
                     type="text"
                     placeholder="Código da Loja"
                     onChange={e => setInput({idLoja: e.target.value})}
@@ -75,6 +113,7 @@ const CupomForm = () => {
                 />
                 <Input
                     name="nomeLoja"
+                    id="nomeLoja"
                     type="text"
                     placeholder="Nome da Loja"
                     onChange={e => setInput({nomeLoja: e.target.value})}
@@ -82,13 +121,14 @@ const CupomForm = () => {
                 />
                 
                 <div className="addCupomButtons">
-                    <ButtonSmall title="Enviar" calltoAction />
+                    <ButtonSmall title="Enviar" onClick={postCupomToAPI()} disabled={invalid} calltoAction />
                     <Link to="/gestaodecupons">
                         <ButtonSmall title="Cancelar" />
                     </Link>
 
                 </div>
 
+                <p class="result"></p>
 
             </form>
         </div>
