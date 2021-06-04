@@ -8,12 +8,19 @@ import './style.css';
 
 
 const initialFormState = {
+    dataInicial: new Intl.DateTimeFormat('en-GB').format(new Date()),
+    validade:'',
+    quantidade: '',
+    valor:'',
     titulo:'',
     descricao:'',
-    validade:'',
-    valor:'',
-    idLoja:'',
-    nomeLoja:''
+    categogia: null,
+    loja: {
+        id: 1,
+        cnpj: '',
+        nome: '',
+        ponto: ''
+    }
 }
 
 const CupomForm = () => {
@@ -25,47 +32,46 @@ const CupomForm = () => {
         setForm( form => ({...form, ...newValue }));
     }
 
-    // https://www.geeksforgeeks.org/how-to-send-a-json-object-to-a-server-using-javascript/
-    const postCupomToAPI = () => {
-        let result = document.querySelector('.result');
-        let titulo = document.querySelector('#titulo');
-        let descricao = document.querySelector('#descricao');
-        let validade = document.querySelector('#validade');
-        let valor = document.querySelector('#valor');
-        let idLoja = document.querySelector('#idLoja');
-        let nomeLoja = document.querySelector('#nomeLoja');
-        
-        let xhr = new XMLHttpRequest();
-        let url = "";
-
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                result.innerHTML = this.responseText;
-            }
-        };
-
-        var data = JSON.stringify({
-            "titulo": titulo.value, 
-            "descricao": descricao.value, 
-            "validade": validade.value, 
-            "valor": valor.value, 
-            "idLoja": idLoja.value, 
-            "nomeLoja": nomeLoja.value})
-
-        xhr.send(data);
+    const testtest = () => {
+        console.log(form);
     }
 
-    // const submitForm = () => {
-    //     if (localStorage.getItem('formData') != null) {
-    //         formData = JSON.parse(localStorage.getItem('formData'));
-    //     }
-    //     formData.push(form);
-    //     localStorage.setItem('formData', JSON.stringify(formData));
-    //     document.getElementById("newRegister").reset();
-    // }
+    const handleSubmit = () => {
+
+        const requestOptions = {
+            method: 'post',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify(form)     
+        }
+
+
+        fetch("http://pblelcoma-final.herokuapp.com/cupons", requestOptions)
+            .then( function (res) {
+                if(!res.ok) {
+                    throw Error(res.statusText)
+                }})
+            .catch(function(error){
+                console.log(error);
+            })
+
+    }
+
+    const formData = [];
+
+    const submitForm = () => {
+        if (localStorage.getItem('formData') != null) {
+            formData = JSON.parse(localStorage.getItem('formData'));
+        }
+        formData.push(form);
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }
 
     return (
         <div className="AddCupomForm">
@@ -108,7 +114,7 @@ const CupomForm = () => {
                     id="idLoja"
                     type="text"
                     placeholder="Código da Loja"
-                    onChange={e => setInput({idLoja: e.target.value})}
+                    onChange={e => setInput({loja: e.target.value})}
                     error={errors.idLoja}
                 />
                 <Input
@@ -120,15 +126,18 @@ const CupomForm = () => {
                     error={errors.nomeLoja}
                 />
                 
+
                 <div className="addCupomButtons">
-                    <ButtonSmall title="Enviar" onClick={postCupomToAPI()} disabled={invalid} calltoAction />
+                <button onClick={submitForm}>test</button>
+
+                    <button >Submit</button>
+                    <ButtonSmall title="Enviar" calltoAction />
                     <Link to="/gestaodecupons">
                         <ButtonSmall title="Cancelar" />
                     </Link>
-
                 </div>
 
-                <p class="result"></p>
+                <p className="result"></p>
 
             </form>
         </div>
