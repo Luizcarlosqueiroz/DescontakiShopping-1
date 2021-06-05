@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './index.css'
 import relatorioImg from '../../assets/images/lojista.png'
 import consumidorImg from '../../assets/images/consumidor.png'
@@ -11,7 +11,10 @@ import NavigationButton from '../../components/NavigationButton'
 import { Link } from 'react-router-dom';
 
 const Menu = ()=>{
-    
+
+    useEffect(() => {
+        document.body.style.backgroundColor = 'rgb(218, 216, 216)'
+    }, []);
     
     return(
         <div>
