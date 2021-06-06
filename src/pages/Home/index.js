@@ -13,7 +13,8 @@ import { Link } from 'react-router-dom';
 const Menu = ()=>{
 
     useEffect(() => {
-        document.body.style.backgroundColor = 'rgb(218, 216, 216)'
+        document.body.style.backgroundColor = 'rgb(218, 216, 216)';
+        document.body.style.margin = '0px'
     }, []);
     
     return(

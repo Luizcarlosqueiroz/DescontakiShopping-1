@@ -5,13 +5,33 @@ import Search from '../SearchBox';
  
 import { AiOutlineSearch } from 'react-icons/ai';
 import Spinner from 'react-bootstrap/Spinner';
+import * as moment from 'moment'
 
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import './index.css';
 
 const CupomMap = () => {
 
 	useEffect(() => {
+
+		function getCurrentMothYear(){
+			let data = new Date();
+			let mes  = (data.getMonth()+1).toString(); 
+			let mesF = (mes.length === 1) ? '0'+mes : mes;
+			let ano = data.getFullYear();
+			let anoF = ano.toString().substr(-2);
+			return mesF+"/"+anoF;
+		}
+
+		let currentMonthYear = getCurrentMothYear();
+		console.log(currentMonthYear);
+
 		fetch(`https://pblelcoma-final.herokuapp.com/cupons/mes/01/2021}`)
       	.then(Response => {
         	return Response.json();
@@ -21,23 +41,55 @@ const CupomMap = () => {
       	});
 	},[])
 
+	const useStyles = makeStyles((theme) => ({
+		formControl: {
+		  margin: theme.spacing(1),
+		  minWidth: 200,
+		},
+		selectEmpty: {
+			marginTop: theme.spacing(2),
+		},
+	  }));
+
+	const [mesAno, setMesAno] = React.useState("01/2021");
+	
+	const SimpleSelect = () => {
+		const classes = useStyles();
+
+		const handleChange = (event) => {
+			setMesAno(event.target.value);
+			handleChangeMonth(event.target.value);
+		};
+
+		return (
+			<FormControl className={classes.formControl}>
+				<InputLabel id="demo-simple-select-helper-label">Mês de Criação</InputLabel>
+				<Select
+					labelId="demo-simple-select-helper-label"
+					id="demo-simple-select-helper"
+					value={mesAno}
+					onChange={handleChange}
+				>
+				<MenuItem value={"11/2020"}>Novembro/2020</MenuItem>
+				<MenuItem value={"01/2021"}>Janeiro/2021</MenuItem>
+				</Select>
+				<FormHelperText>Mês/Ano</FormHelperText>
+			</FormControl>
+		)
+
+	}
 
 	const [search, setSearch] = useState();
 
 	const [cuponsInfo, setCupomInfo] = useState([]);
-
-	const [loading, setLoading] = useState(false);
-
 
 	const searchSpace=(event)=>{
     	let keyword = event.target.value;
       	setSearch(keyword)
     }
 
-  	const handleChangeMonth=(event)=>{
-    	let mesAno = event.target.value;
-
-      	fetch(`https://pblelcoma-final.herokuapp.com/cupons/mes/${mesAno}`)
+  	const handleChangeMonth=(abc)=>{
+      	fetch(`https://pblelcoma-final.herokuapp.com/cupons/mes/${abc}`)
       	.then(Response => {
         	return Response.json();
       	})
@@ -45,13 +97,14 @@ const CupomMap = () => {
         	setCupomInfo(data);
 			console.log(data);
       	});
-    }
+    }	
 
 
 	const CupomAtivoDesativado = (dateValidade) => {
-		console.log(new Date(dateValidade));
-		if (new Date(dateValidade) > new Date()) {
-			return (<ButtonSmall title="Ativado" calltoAction />);
+
+		let dateValidadeFormat = moment(dateValidade, 'DD/MM/YYYY', true).toDate();
+		if (dateValidadeFormat > new Date()) {
+			return (<ButtonSmall title="Ativado" cursor="none" calltoAction />);
 		} else {
 			return (<ButtonSmall title="Desativado" />);
 		}
@@ -67,7 +120,7 @@ const CupomMap = () => {
     	return (
       		<div className="container">
 				<div className="cupomInfo">
-					<h3>{data.titulo}</h3>
+					<h3 className="cupomInfoTitle">{data.titulo}</h3>
 					<h4>Valor: R$ {data.valor.toFixed(2)}</h4>
 					<p>Loja: {data.nomeLoja}</p>
 					<p id="dataDescricao">Descrição: {data.descricao}</p>
@@ -82,14 +135,10 @@ const CupomMap = () => {
 						<tr>
 							<th>Validade: </th> <th>{data.validade}</th>
 						</tr>
-						<tr>
-							<th>{CupomAtivoDesativado(data.validade)}</th>
-						</tr>
-
 					</table>
 
 					<ButtonSmall title="Editar" disabled={true} />
-					<ButtonSmall title="Ativado" calltoAction />
+					<>{CupomAtivoDesativado(data.validade)}</>
 				</div>
       		</div>
     	);
@@ -98,14 +147,11 @@ const CupomMap = () => {
 
   	return (
     	<div>
-			<Spinner animation="border" />             
-            <select onChange={handleChangeMonth}>
-                <option value="11/2020"> Nov/20</option>
-                <option selected value="01/2021"> Jan/21</option>
-            </select>
+			<Spinner animation="border" />     
+
+			<SimpleSelect />
 			<br />
-            <AiOutlineSearch size="1.5em"/>
-            <Search placeholder="Pesquisar..." handleSearch={(e)=>searchSpace(e)}></Search>
+            <Search placeholder="Pesquisar pelo título..." handleSearch={(e)=>searchSpace(e)}></Search>
             {items}
         </div>
   	);
