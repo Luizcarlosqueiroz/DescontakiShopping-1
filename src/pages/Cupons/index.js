@@ -22,7 +22,7 @@ const ListaCupons = () => {
             <MenuSide />
             
             <div id="container">                
-                <h1>Cupons</h1>
+                <h1>Gestão de Cupons</h1>
                 <CupomMap />
             </div>
 

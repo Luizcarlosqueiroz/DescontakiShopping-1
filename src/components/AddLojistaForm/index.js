@@ -23,7 +23,7 @@ const LojistaForm = () => {
 
     return(
         <div className='div-form-lojista'>
-            <h3>Preencha os campos para cadastrar o Lojista</h3>
+            <h3 className="h3-form-lojista">Preencha os campos para cadastrar o Lojista</h3>
             <form className='form-lojista'>
                 <Input
                    name='cnpj'
