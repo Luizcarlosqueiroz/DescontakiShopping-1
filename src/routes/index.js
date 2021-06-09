@@ -22,7 +22,6 @@ const Routes = () => {
                     <Route path="/gestaodecupons" component={ListaCupons} />
                     <Route path="/adicionarnovocupom" component={AdicionarNovoCupom} />
                     <Route path="/relatorios" component={Relatorios} />
-                    <Route path="/cadastrarLojista" component={CadastrarLojista} />
                 </Switch>
             </BrowserRouter>
         </div>

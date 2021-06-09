@@ -6,9 +6,9 @@ const ButtonSmall = ({title, handlerButton, calltoAction, disabled}) => {
 
     return(
         
-        <div>
+        <>
             <button onClick={handlerButton} disabled={disabled} className= {calltoAction ? "buttonclass activeButton" : "buttonclass disactiveButton"} >{title}</button>
-        </div>
+        </>
     )
 }
 

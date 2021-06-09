@@ -58,8 +58,9 @@ const LojistaForm = () => {
                 />
 
                 <div className="form-cadastrar-lojista-buttons">
-                    <ButtonSmall title="Enviar" calltoAction />
-                    <Link to="/">
+                    <ButtonSmall title="Enviar" calltoAction  />
+                    <br></br>
+                    <Link to="/menu">
                         <ButtonSmall title="Cancelar" />
                     </Link>
 
