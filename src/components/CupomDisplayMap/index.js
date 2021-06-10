@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import ButtonSmall from '../ButtonSmall';
 import Search from '../SearchBox';
  
-import { AiOutlineSearch } from 'react-icons/ai';
 import Spinner from 'react-bootstrap/Spinner';
 import * as moment from 'moment'
 
@@ -25,19 +24,20 @@ const CupomMap = () => {
 			let mes  = (data.getMonth()+1).toString(); 
 			let mesF = (mes.length === 1) ? '0'+mes : mes;
 			let ano = data.getFullYear();
-			let anoF = ano.toString().substr(-2);
+			let anoF = ano.toString();
 			return mesF+"/"+anoF;
 		}
 
 		let currentMonthYear = getCurrentMothYear();
 		console.log(currentMonthYear);
 
-		fetch(`https://pblelcoma-final.herokuapp.com/cupons/mes/01/2021}`)
+		fetch(`https://pblelcoma-final.herokuapp.com/cupons/mes/${currentMonthYear}`)
       	.then(Response => {
         	return Response.json();
       	})
       	.then(data =>{
         	setCupomInfo(data);
+			console.log(data);
       	});
 	},[])
 
@@ -51,7 +51,7 @@ const CupomMap = () => {
 		},
 	  }));
 
-	const [mesAno, setMesAno] = React.useState("01/2021");
+	const [mesAno, setMesAno] = React.useState("06/2021");
 	
 	const SimpleSelect = () => {
 		const classes = useStyles();
@@ -70,8 +70,11 @@ const CupomMap = () => {
 					value={mesAno}
 					onChange={handleChange}
 				>
-				<MenuItem value={"11/2020"}>Novembro/2020</MenuItem>
 				<MenuItem value={"01/2021"}>Janeiro/2021</MenuItem>
+				<MenuItem value={"02/2021"}>Fevereiro/2021</MenuItem>
+				<MenuItem value={"04/2021"}>Março/2021</MenuItem>
+				<MenuItem value={"05/2021"}>Abril/2021</MenuItem>
+				<MenuItem value={"06/2021"}>Junho/2021</MenuItem>
 				</Select>
 				<FormHelperText>Mês/Ano</FormHelperText>
 			</FormControl>
@@ -106,7 +109,7 @@ const CupomMap = () => {
 		if (dateValidadeFormat > new Date()) {
 			return (<ButtonSmall title="Ativado" cursor="none" calltoAction />);
 		} else {
-			return (<ButtonSmall title="Desativado" />);
+			return (<ButtonSmall title="Vencido" />);
 		}
 	}
 
@@ -116,12 +119,12 @@ const CupomMap = () => {
     	} else if (data.titulo.toLowerCase().includes(search.toLowerCase())) {
       		return data;
     	}
-  	}).map((data) => {
+  	}).map((data, index) => {
     	return (
-      		<div className="container">
+      		<div className="container" key={index}>
 				<div className="cupomInfo">
 					<h3 className="cupomInfoTitle">{data.titulo}</h3>
-					<h4>Valor: R$ {data.valor.toFixed(2)}</h4>
+					<h4>Desconto: {data.valor}%</h4>
 					<p>Loja: {data.nomeLoja}</p>
 					<p id="dataDescricao">Descrição: {data.descricao}</p>
 				</div>
@@ -129,12 +132,14 @@ const CupomMap = () => {
 				<div className="barraLateral"></div>
 				<div className="cupomStats">
 					<table>
-						<tr>
-							<th>Data Incial: </th> <th>{data.dataInicial}</th>
-						</tr>
-						<tr>
-							<th>Validade: </th> <th>{data.validade}</th>
-						</tr>
+						<tbody>
+							<tr>
+								<th>Data Incial: </th><th>{data.dataInicial}</th>
+							</tr>
+							<tr>
+								<th>Validade: </th><th>{data.validade}</th>
+							</tr>
+						</tbody>
 					</table>
 
 					<ButtonSmall title="Editar" disabled={true} />
@@ -152,6 +157,8 @@ const CupomMap = () => {
 			<SimpleSelect />
 			<br />
             <Search placeholder="Pesquisar pelo título..." handleSearch={(e)=>searchSpace(e)}></Search>
+			<hr />
+			<br />
             {items}
         </div>
   	);

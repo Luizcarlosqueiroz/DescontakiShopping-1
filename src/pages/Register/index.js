@@ -4,6 +4,7 @@ import './style.css';
 import { Link } from 'react-router-dom';
 // import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {AiOutlineArrowLeft} from 'react-icons/ai';
+import '../../style.css';
 
 import logo from '../../assets/images/logo.png';
 
