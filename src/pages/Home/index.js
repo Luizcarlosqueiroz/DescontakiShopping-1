@@ -10,7 +10,7 @@ import NavigationButton from '../../components/NavigationButton'
 
 import { Link } from 'react-router-dom';
 
-const Menu = ()=>{
+const Home = ()=>{
 
     useEffect(() => {
         document.body.style.backgroundColor = 'rgb(218, 216, 216)';
@@ -27,8 +27,8 @@ const Menu = ()=>{
                 <p>O que deseja fazer?</p>
                 <hr className='hrLarge'></hr>
                 <div id='shoppingOptions'>
-                    <Link to="/relatorios"><NavigationButton value='Relatório dos Lojistas' imgSrc={relatorioImg}/></Link>
-                    <Link to="/relatorios"><NavigationButton value='Relatório dos Consumidores' imgSrc={consumidorImg}/></Link>
+                    {/*<Link to="/relatorios">*/}<NavigationButton value='Relatório dos Lojistas' imgSrc={relatorioImg}/>{/*</Link>*/}
+                    {/*<Link to="/relatorios">*/}<NavigationButton value='Relatório dos Consumidores' imgSrc={consumidorImg}/>{/*</Link>*/}
                     <Link to="/cadastrarlojista"><NavigationButton value='Cadastrar Lojista' imgSrc={registrationImg}/></Link>
                     <Link to="/gestaodecupons"><NavigationButton value='Gestão de Cupons' imgSrc={gestaoDeCuponsImg}/></Link>
                 </div>
@@ -39,4 +39,4 @@ const Menu = ()=>{
     )
 }
 
-export default Menu
+export default Home

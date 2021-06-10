@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../pages/Home';
+import Home from '../pages/Home';
 import ListaCupons from '../pages/Cupons';
 import AdicionarNovoCupom from '../pages/AdicionarCupom';
 import Relatorios from '../pages/Relatorios';
@@ -17,7 +17,7 @@ const Routes = () => {
                 <Switch>
                     <Route path="/" exact={true} component={Login} />
                     <Route path="/cadastro" component={Register} />
-                    <Route path="/menu" component={Menu} />
+                    <Route path="/home" component={Home} />
                     <Route path="/cadastrarLojista" component={CadastrarLojista} />
                     <Route path="/gestaodecupons" component={ListaCupons} />
                     <Route path="/adicionarnovocupom" component={AdicionarNovoCupom} />

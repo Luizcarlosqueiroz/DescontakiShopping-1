@@ -44,7 +44,7 @@ const Login = ({ history }) => {
             for (let i = 0; i < userRecords.length; i++) {
                 const checkLogin = userRecords.find(val => userRecords[i].cpf === formLogin.cpf);
                 if (checkLogin) {
-                    history.push('menu');
+                    history.push('home');
                 } else {
                     toast.error('Usuário ou senha incorreto!', {
                         position: "top-right",
@@ -78,7 +78,7 @@ const Login = ({ history }) => {
                 />
                 <Button title="Entrar" handlerButton={submitLogin} width="270px" />
 
-                <Link to="/menu"></Link>
+                <Link to="/home"></Link>
 
                 <label className="login--forgotPassword">Esqueceu a senha?</label>
                 <Link to="/cadastro">
