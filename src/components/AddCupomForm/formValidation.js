@@ -11,14 +11,13 @@ export const FormValidations = yup.object().shape({
         .string()
         .required('*Validade obrigatória'),
     valor: yup
-        .string()
+        .number()
+        .typeError('*Valor deve ser um valor numérico')
         .required('*Valor obrigatório'),
-    idLoja: yup
-        .string()
+    id: yup
+        .number()
+        .typeError('*Código deve ser valor numérico')
         .required('*Código da Loja obrigatório'),
-    nomeLoja: yup
-        .string()
-        .required('Nome da Loja obrigatório'),
 })
 
 export default FormValidations;

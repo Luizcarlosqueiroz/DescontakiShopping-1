@@ -12,6 +12,7 @@
 }
 .login--register {
 	cursor: pointer;
+	text-decoration: none;
 }
 .login--title {
 	color: #dad8d8;
